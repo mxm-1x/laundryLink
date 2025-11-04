@@ -11,7 +11,7 @@ const jwt_1 = require("../utils/jwt");
 const studentRegister = async (req, res) => {
     const { name, email, password, bagNumber, gender } = req.body;
     // Validate domain
-    if (!email.endsWith("@rishihood.edu.in")) {
+    if (!email.endsWith("rishihood.edu.in")) {
         return res.status(400).json({ error: "Invalid email domain" });
     }
     try {
@@ -28,7 +28,7 @@ const studentRegister = async (req, res) => {
 exports.studentRegister = studentRegister;
 const studentLogin = async (req, res) => {
     const { email, password } = req.body;
-    if (!email.endsWith("@rishihood.edu.in")) {
+    if (!email.endsWith("rishihood.edu.in")) {
         return res.status(400).json({ error: "Only university emails allowed" });
     }
     try {

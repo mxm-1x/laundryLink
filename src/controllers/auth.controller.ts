@@ -8,14 +8,14 @@ export const studentRegister = async (req: Request, res: Response) => {
     const { name, email, password, bagNumber, gender } = req.body;
 
     // Validate domain
-    if (!email.endsWith("@rishihood.edu.in")) {
+    if (!email.endsWith("rishihood.edu.in")) {
         return res.status(400).json({ error: "Invalid email domain" });
     }
 
     try {
         const hashed = await bcrypt.hash(password, 10);
         const student = await prisma.student.create({
-            data: { name, email, password: hashed, bagNumber, gender },
+            data: { name, email, password: hashed, bagNumber: String(bagNumber), gender },
         });
         res.status(201).json({ message: "Student registered successfully", student });
     } catch (error: any) {
@@ -26,7 +26,7 @@ export const studentRegister = async (req: Request, res: Response) => {
 export const studentLogin = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
-    if (!email.endsWith("@rishihood.edu.in")) {
+    if (!email.endsWith("rishihood.edu.in")) {
         return res.status(400).json({ error: "Only university emails allowed" });
     }
 
