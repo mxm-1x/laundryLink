@@ -16,20 +16,28 @@ datasource db {
 
 model Student {
   id        Int      @id @default(autoincrement())
-  email     String   @unique
   name      String
+  email     String   @unique
+  password  String   @default("")
   bagNumber String   @unique
   gender    String
   laundry   Laundry[]
-  
 }
 
 model Laundry {
   id          Int      @id @default(autoincrement())
   studentId   Int
-  clothCount  Int
   status      String   @default("pending")
   dropDate    DateTime @default(now())
   pickupDate  DateTime?
   Student     Student  @relation(fields: [studentId], references: [id])
+}
+
+model Staff {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("staff")
+  createdAt DateTime @default(now())
 }
