@@ -20,9 +20,12 @@ const registerStudent = async (req, res) => {
 exports.registerStudent = registerStudent;
 const getLaundryStatus = async (req, res) => {
     const { bagNumber } = req.params;
+    if (!bagNumber) {
+        return res.status(400).json({ error: "Bag number is required" });
+    }
     try {
         const student = await prisma_1.default.student.findUnique({
-            where: { bagNumber },
+            where: { bagNumber: bagNumber },
             include: { laundry: true },
         });
         if (!student)
