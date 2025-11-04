@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:16
+    container_name: laundry_system_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: msm
+      POSTGRES_PASSWORD: mxmnew
+      POSTGRES_DB: laundry_system_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
