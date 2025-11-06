@@ -13,24 +13,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Student {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   name      String
-  email     String   @unique
-  password  String   @default("")
-  bagNumber String   @unique
+  email     String    @unique
+  password  String    @default("")
+  bagNumber String    @unique
   gender    String
   laundry   Laundry[]
 }
 
 model Laundry {
-  id          Int      @id @default(autoincrement())
-  studentId   Int
-  status      String   @default("pending")
-  dropDate    DateTime @default(now())
-  pickupDate  DateTime?
-  Student     Student  @relation(fields: [studentId], references: [id])
+  id           Int       @id @default(autoincrement())
+  studentId    Int
+  bagNumber    String
+  status       String    @default("PENDING")
+  shirts       Int       @default(0)
+  bottoms      Int       @default(0)
+  towels       Int       @default(0)
+  bedsheets    Int       @default(0)
+  others       Int       @default(0)
+  totalItems   Int       @default(0)
+  issue        String?
+  pickupDate   DateTime  @default(now())
+  deliveryDate DateTime?
+  createdAt    DateTime  @default(now())
+  Student      Student   @relation(fields: [studentId], references: [id])
 }
 
 model Staff {
