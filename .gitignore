@@ -1,5 +1,21 @@
 node_modules
-# Keep environment variables out of version control
-.env
+dist
+*.log
 
+# Environment variables (never commit sensitive data)
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Prisma
 /src/generated/prisma
