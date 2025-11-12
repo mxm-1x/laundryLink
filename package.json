@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
-    "build": "tsc && npm prune --production",
+    "build": "tsc",
     "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

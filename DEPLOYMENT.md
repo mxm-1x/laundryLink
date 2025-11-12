@@ -47,6 +47,7 @@
 ### **Railway/Render/Netlify**
 
 1. **Connect your repository** to the hosting platform
+
 2. **Set environment variables:**
    - `DATABASE_URL`
    - `JWT_SECRET`
@@ -55,11 +56,16 @@
    - `PORT=3000`
 
 3. **Configure build settings:**
-   - **Build Command:** `npm run build`
+   - **Build Command:** `npm install && npm run build`
    - **Start Command:** `npm run start`
    - **Node Version:** `20.x`
 
 4. **Deploy** - Platform will automatically run build and start
+
+**Important for Render:**
+- Render automatically installs dependencies before build
+- DO NOT use `npm ci --production` or `npm prune` in build command
+- All dependencies (including TypeScript) must be available during build
 
 ### **Heroku**
 
