@@ -17,7 +17,7 @@ const studentRegister = async (req, res) => {
     try {
         const hashed = await bcryptjs_1.default.hash(password, 10);
         const student = await prisma_1.default.student.create({
-            data: { name, email, password: hashed, bagNumber, gender },
+            data: { name, email, password: hashed, bagNumber: String(bagNumber), gender },
         });
         res.status(201).json({ message: "Student registered successfully", student });
     }

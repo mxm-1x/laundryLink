@@ -7,10 +7,12 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const students_routes_1 = __importDefault(require("./routes/students.routes"));
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
+const staff_routes_1 = __importDefault(require("./routes/staff.routes"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use("/api/students", students_routes_1.default);
 app.use("/api/auth", auth_routes_1.default);
+app.use("/api/laundry", staff_routes_1.default);
 exports.default = app;
 //# sourceMappingURL=app.js.map
