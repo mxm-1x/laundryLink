@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -15,29 +9,29 @@ datasource db {
 
 model Student {
   id        Int       @id @default(autoincrement())
-  name      String
   email     String    @unique
-  password  String    @default("")
+  name      String
   bagNumber String    @unique
   gender    String
+  password  String    @default("")
   laundry   Laundry[]
 }
 
 model Laundry {
   id           Int       @id @default(autoincrement())
   studentId    Int
-  bagNumber    String
   status       String    @default("PENDING")
-  shirts       Int       @default(0)
-  bottoms      Int       @default(0)
-  towels       Int       @default(0)
-  bedsheets    Int       @default(0)
-  others       Int       @default(0)
-  totalItems   Int       @default(0)
-  issue        String?
   pickupDate   DateTime  @default(now())
-  deliveryDate DateTime?
+  bagNumber    String
+  bedsheets    Int       @default(0)
+  bottoms      Int       @default(0)
   createdAt    DateTime  @default(now())
+  deliveryDate DateTime?
+  others       Int       @default(0)
+  shirts       Int       @default(0)
+  totalItems   Int       @default(0)
+  towels       Int       @default(0)
+  issue        String?
   Student      Student   @relation(fields: [studentId], references: [id])
 }
 
